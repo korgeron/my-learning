@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/login-form.css">
 </head>
 <body>
-<%@ include file="partials/nav.jsp" %>
+<%@ include file="partials/index-nav.jsp" %>
 
 
 <form action="/login" method="POST">

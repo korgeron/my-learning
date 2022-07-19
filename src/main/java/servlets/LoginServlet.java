@@ -14,4 +14,18 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, res);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        boolean canLogIn = username.equals("Kevin@1994") && password.equals("codeup");
+
+        if (canLogIn){
+            res.sendRedirect("/profile");
+        } else {
+            res.sendRedirect("/login");
+        }
+
+    }
 }

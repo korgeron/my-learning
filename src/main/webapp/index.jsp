@@ -11,9 +11,10 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-<%@ include file="WEB-INF/partials/nav.jsp" %>
-<h1>MUST LOGIN TO VIEW PRODUCTS</h1>
+<%@ include file="WEB-INF/partials/index-nav.jsp" %>
+<h1 style="position: relative; left: 25%; top: 35%">MUST LOGIN TO VIEW PRODUCTS</h1>
 
 </body>
 </html>
