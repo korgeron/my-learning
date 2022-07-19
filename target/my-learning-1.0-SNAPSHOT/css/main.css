@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #c6c9c9;
+}
+
+nav {
+    margin: 0;
+    padding: 0;
+    background: #587777;
+    height: 10%;
+}
+
+ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+li {
+    list-style: none;
+    padding-right: 1em;
+    padding-top: 2%;
+}
+
+li > a:hover {
+    color: orange;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+h1{
+    position: relative;
+    left: 25%;
+    top: 35%;
+}
