@@ -27,7 +27,6 @@ formbutton {
     display: flex;
     justify-content: center;
     grid-area: formbutton !important;
-
 }
 
 label {
