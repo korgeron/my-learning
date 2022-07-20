@@ -18,4 +18,16 @@ public class ProfileServlet extends HttpServlet {
         req.setAttribute("user", user);
         req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req,res);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        String comment = req.getParameter("comment");
+        session.setAttribute("comment", comment);
+
+        req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req,res);
+
+
+    }
 }

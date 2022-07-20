@@ -23,9 +23,20 @@
         <content1>
 
             <comment>
-
+                <h1>${comment}</h1>
             </comment>
+
             <commentbox>
+
+                <form action="/profile" method="POST">
+                    <formcontent>
+                        <label for="comment">COMMENTS</label>
+                        <textarea style="height: 90px" name="comment" id="comment" cols="30" rows="10"></textarea>
+                    </formcontent>
+                    <formbutton>
+                        <button type="submit">Post</button>
+                    </formbutton>
+                </form>
 
             </commentbox>
 
