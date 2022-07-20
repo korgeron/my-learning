@@ -23,7 +23,7 @@
         <content1>
 
             <comment>
-                <h1>${comment}</h1>
+                <p>${comment}</p>
             </comment>
 
             <commentbox>
@@ -41,7 +41,15 @@
             </commentbox>
 
         </content1>
-        <content2></content2>
+
+        <content2>
+            <h5 style="text-align: center">ABOUT ME</h5>
+            <p style="padding: 1px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem incidunt laboriosam laborum minima reiciendis repudiandae tempore veritatis.</p>
+            <h5 style="text-align: center">ABOUT PRODUCTS</h5>
+            <p style="padding: 1px">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p style="padding: 1px">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+        </content2>
 
     </profilecontent>
 
