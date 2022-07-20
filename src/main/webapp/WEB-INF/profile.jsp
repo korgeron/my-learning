@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kjorgeron0819
@@ -15,18 +16,26 @@
 <%@ include file="partials/profile-nav.jsp"%>
 
 <container>
-    <profilecontent>
+    <profilecontent style="max-height: 80vh">
         <profileimage>
             <img style="height: 80px; width: auto; border-radius: 100%; border: 1px inset darkslategrey;" src="/images/profile-img.webp" alt="profile image">
             <h6 style="font-size: 20px; display: flex; align-self: flex-end">${user}</h6>
         </profileimage>
         <content1>
 
-            <comment>
-                <p>${comment}</p>
+            <comment style="overflow-y: scroll">
+                <c:if test="${comments != null}">
+                <c:forEach var="comment" items="${comments}">
+                    <box style="display: flex;padding-left: .5em; margin: 0; border-bottom: 1px solid grey">
+                        <img style="height: 30px; width: auto; border-radius: 5%; border: 1px inset darkslategrey; align-self: center" src="${random}" alt="profile image">
+                        <p style="padding-left: .5em; word-wrap: break-word">${comment}</p>
+                    </box>
+                </c:forEach>
+                </c:if>
+
             </comment>
 
-            <commentbox>
+            <commentbox style="">
 
                 <form action="/profile" method="POST">
                     <formcontent>
