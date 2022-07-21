@@ -21,21 +21,21 @@
             <img style="height: 80px; width: auto; border-radius: 100%; border: 1px inset darkslategrey;" src="/images/profile-img.webp" alt="profile image">
             <h6 style="font-size: 20px; display: flex; align-self: flex-end">${user}</h6>
         </profileimage>
-        <content1>
+        <content1 style="margin-left: 1em">
 
-            <comment style="overflow-y: scroll">
+            <comment style="overflow-y: scroll; margin-top: 1em">
                 <c:if test="${comments != null}">
                 <c:forEach var="comment" items="${comments}">
                     <box style="display: flex;padding-left: .5em; margin: 0; border-bottom: 1px solid grey">
-                        <img style="height: 30px; width: auto; border-radius: 5%; border: 1px inset darkslategrey; align-self: center" src="${random}" alt="profile image">
-                        <p style="padding-left: .5em; word-wrap: break-word">${comment}</p>
+                        <img style="height: 30px; width: auto; border-radius: 5%; border: 1px inset darkslategrey; align-self: center" src="${comment.getUrl()}" alt="profile image">
+                        <p style="padding-left: .5em; word-wrap: break-word">${comment.getComment()}</p>
                     </box>
                 </c:forEach>
                 </c:if>
 
             </comment>
 
-            <commentbox style="">
+            <commentbox style="margin-bottom: 1em">
 
                 <form action="/profile" method="POST">
                     <formcontent>
