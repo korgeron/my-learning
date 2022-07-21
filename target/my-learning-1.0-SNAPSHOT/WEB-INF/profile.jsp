@@ -10,14 +10,14 @@
 <html>
 <head>
     <title>Profile Page</title>
-  <link rel="stylesheet" href="/css/profile.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profile.css">
 </head>
 <body>
 <%@ include file="partials/profile-nav.jsp"%>
 
 <container>
     <profilecontent style="max-height: 80vh">
-        <profileimage>
+        <profileimage style="margin-top: .5em">
             <img style="height: 80px; width: auto; border-radius: 100%; border: 1px inset darkslategrey;" src="/images/profile-img.webp" alt="profile image">
             <h6 style="font-size: 20px; display: flex; align-self: flex-end">${user}</h6>
         </profileimage>
@@ -62,9 +62,15 @@
 
     </profilecontent>
 
-    <productcontent>
+    <productcontent style="display: flex">
+        <box style ="margin-top: 1em;margin-left: 1.5em;background: rgba(128,128,128,0.43);min-height: 83vh; max-height: 83vh; width: 90%; border-radius: 2%; border: 1px solid dimgrey; display: flex; overflow-y: scroll; flex-wrap: wrap">
+            <card style="height: 200px; width: 130px; border: 1px solid grey; border-radius: 2%; margin: .5em; background: lightgrey">
 
+            </card>
+        </box>
     </productcontent>
+
+
 </container>
 
 

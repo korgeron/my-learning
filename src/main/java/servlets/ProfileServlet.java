@@ -26,15 +26,19 @@ String url = "";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
+
+        //todo: displays username
         String user = (String) session.getAttribute("user");
         req.setAttribute("user", user);
 
+        //todo: start of comment data
         Comments commentsDao = DaoFactory.getCommentDao();
         List<Comment> comments = commentsDao.all();
         if (comments != null){
+            Collections.reverse(comments);
             req.setAttribute("comments", comments);
         }
-
+        //todo: end of comment data
 
         req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, res);
     }
@@ -44,9 +48,8 @@ String url = "";
         List<Comment> comments = null;
         HttpSession session = req.getSession();
 
+        //todo: start of comment data
         int random = (int) (Math.random() * 3) + 1;
-
-
         if (random == 1) {
             url = "/images/random-user1.webp";
         }
@@ -56,30 +59,24 @@ String url = "";
         if (random == 3) {
             url = "/images/random-user3.webp";
         }
-
-
         comment = req.getParameter("comment");
-
         if (comment.equals("") || url.equals("")) {
             comment = null;
             url = null;
         }
-
         if (comment != null && url != null) {
             Comments commentsDao = DaoFactory.getCommentDao();
             commentsDao.insert(new Comment(url, comment));
             comments = commentsDao.all();
             Collections.reverse(comments);
             session.setAttribute("comments", comments);
-
         }
-
         if (comments != null){
             req.setAttribute("comments", comments);
         }
+        //todo: end of comment data
+
 
         req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, res);
-
-
     }
 }
