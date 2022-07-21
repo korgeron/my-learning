@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
 @WebServlet(name = "ProfileServlet", urlPatterns = "/profile")
 public class ProfileServlet extends HttpServlet {
-//    List<String> comments = new ArrayList<>();
+String comment = null;
+String url = "";
 
 
     @Override
@@ -26,17 +28,24 @@ public class ProfileServlet extends HttpServlet {
         HttpSession session = req.getSession();
         String user = (String) session.getAttribute("user");
         req.setAttribute("user", user);
+
+        Comments commentsDao = DaoFactory.getCommentDao();
+        List<Comment> comments = commentsDao.all();
+        if (comments != null){
+            req.setAttribute("comments", comments);
+        }
+
+
         req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, res);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        Comments commentsDao = DaoFactory.getCommentDao();
-        List<Comment> comments = commentsDao.all();
-
+        List<Comment> comments = null;
+        HttpSession session = req.getSession();
 
         int random = (int) (Math.random() * 3) + 1;
-        String url = null;
+
 
         if (random == 1) {
             url = "/images/random-user1.webp";
@@ -49,17 +58,19 @@ public class ProfileServlet extends HttpServlet {
         }
 
 
-        String comment = req.getParameter("comment");
+        comment = req.getParameter("comment");
 
-        if (comment.equals("")) {
+        if (comment.equals("") || url.equals("")) {
             comment = null;
+            url = null;
         }
 
-        if (comment != null) {
-
+        if (comment != null && url != null) {
+            Comments commentsDao = DaoFactory.getCommentDao();
             commentsDao.insert(new Comment(url, comment));
-
-            req.setAttribute("comments", comments);
+            comments = commentsDao.all();
+            Collections.reverse(comments);
+            session.setAttribute("comments", comments);
 
         }
 
